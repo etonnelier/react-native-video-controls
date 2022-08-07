@@ -952,9 +952,6 @@ export default class VideoPlayer extends Component {
     const backControl = this.props.disableBack
       ? this.renderNullControl()
       : this.renderBack();
-    const fullscreenControl = this.props.disableFullscreen
-      ? this.renderNullControl()
-      : this.renderFullscreen();
 
     return (
       <Animated.View
@@ -967,7 +964,6 @@ export default class VideoPlayer extends Component {
         ]}>
         <SafeAreaView style={styles.controls.topControlGroup}>
           {backControl}
-          {fullscreenControl}
         </SafeAreaView>
       </Animated.View>
     );
@@ -1042,6 +1038,9 @@ export default class VideoPlayer extends Component {
     const volumeControl = this.props.disableVolume
       ? this.renderNullControl()
       : this.renderVolume();
+    const fullscreenControl = this.props.disableFullscreen
+      ? this.renderNullControl()
+      : this.renderFullscreen();
 
     return (
       <Animated.View
@@ -1062,6 +1061,7 @@ export default class VideoPlayer extends Component {
             {playPauseControl}
             {volumeControl}
             {timerControl}
+            {fullscreenControl}
           </SafeAreaView>
         </ImageBackground>
       </Animated.View>
