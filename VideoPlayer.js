@@ -33,7 +33,6 @@ export default class VideoPlayer extends Component {
     rate: 1,
     showTimeRemaining: true,
     showHours: false,
-    noTimeout: false,
   };
 
   constructor(props) {
@@ -335,20 +334,16 @@ export default class VideoPlayer extends Component {
    * Default is 15s
    */
   setControlTimeout() {
-    if (!this.props.noTimeout) {
-      this.player.controlTimeout = setTimeout(() => {
-        this._hideControls();
-      }, this.player.controlTimeoutDelay);
-    }
+    this.player.controlTimeout = setTimeout(() => {
+      this._hideControls();
+    }, this.player.controlTimeoutDelay);
   }
 
   /**
    * Clear the hide controls timeout.
    */
   clearControlTimeout() {
-    if (!this.props.noTimeout) {
-      clearTimeout(this.player.controlTimeout);
-    }
+    clearTimeout(this.player.controlTimeout);
   }
 
   /**
@@ -893,6 +888,7 @@ export default class VideoPlayer extends Component {
         } else {
           state.muted = false;
         }
+
         this.setState(state);
       },
 
