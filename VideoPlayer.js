@@ -965,15 +965,10 @@ export default class VideoPlayer extends Component {
             marginTop: this.animations.topControl.marginTop,
           },
         ]}>
-        <ImageBackground
-          source={require('./assets/img/top-vignette.png')}
-          style={[styles.controls.column]}
-          imageStyle={[styles.controls.vignette]}>
-          <SafeAreaView style={styles.controls.topControlGroup}>
-            {backControl}
-            {fullscreenControl}
-          </SafeAreaView>
-        </ImageBackground>
+        <SafeAreaView style={styles.controls.topControlGroup}>
+          {backControl}
+          {fullscreenControl}
+        </SafeAreaView>
       </Animated.View>
     );
   }
