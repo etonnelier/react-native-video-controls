@@ -122,7 +122,7 @@ export default class VideoPlayer extends Component {
       seekPanResponder: PanResponder,
       controlTimeout: null,
       tapActionTimeout: null,
-      volumeWidth: 150,
+      volumeWidth: 70,
       iconOffset: 0,
       seekerWidth: 0,
       ref: Video,
@@ -956,9 +956,6 @@ export default class VideoPlayer extends Component {
     const backControl = this.props.disableBack
       ? this.renderNullControl()
       : this.renderBack();
-    const volumeControl = this.props.disableVolume
-      ? this.renderNullControl()
-      : this.renderVolume();
     const fullscreenControl = this.props.disableFullscreen
       ? this.renderNullControl()
       : this.renderFullscreen();
@@ -978,7 +975,6 @@ export default class VideoPlayer extends Component {
           imageStyle={[styles.controls.vignette]}>
           <SafeAreaView style={styles.controls.topControlGroup}>
             {backControl}
-            {volumeControl}
             {fullscreenControl}
           </SafeAreaView>
         </ImageBackground>
@@ -1052,6 +1048,9 @@ export default class VideoPlayer extends Component {
     const playPauseControl = this.props.disablePlayPause
       ? this.renderNullControl()
       : this.renderPlayPause();
+    const volumeControl = this.props.disableVolume
+      ? this.renderNullControl()
+      : this.renderVolume();
 
     return (
       <Animated.View
@@ -1070,7 +1069,7 @@ export default class VideoPlayer extends Component {
           <SafeAreaView
             style={[styles.controls.row, styles.controls.bottomControlGroup]}>
             {playPauseControl}
-            {this.renderTitle()}
+            {volumeControl}
             {timerControl}
           </SafeAreaView>
         </ImageBackground>
@@ -1387,9 +1386,9 @@ const styles = {
       justifyContent: 'flex-start',
       flexDirection: 'row',
       height: 1,
-      marginLeft: 20,
-      marginRight: 20,
-      width: 150,
+      marginLeft: 10,
+      marginRight: 10,
+      width: 70,
     },
     track: {
       backgroundColor: '#333',
