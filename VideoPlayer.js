@@ -366,21 +366,21 @@ export default class VideoPlayer extends Component {
         duration: this.props.controlAnimationTiming,
         useNativeDriver: false,
       }),
-      // Animated.timing(this.animations.topControl.marginTop, {
-      //   toValue: -100,
-      //   duration: this.props.controlAnimationTiming,
-      //   useNativeDriver: false,
-      // }),
+      Animated.timing(this.animations.topControl.marginTop, {
+        toValue: -100,
+        duration: this.props.controlAnimationTiming,
+        useNativeDriver: false,
+      }),
       Animated.timing(this.animations.bottomControl.opacity, {
         toValue: 0,
         duration: this.props.controlAnimationTiming,
         useNativeDriver: false,
       }),
-      // Animated.timing(this.animations.bottomControl.marginBottom, {
-      //   toValue: -100,
-      //   duration: this.props.controlAnimationTiming,
-      //   useNativeDriver: false,
-      // }),
+      Animated.timing(this.animations.bottomControl.marginBottom, {
+        toValue: -100,
+        duration: this.props.controlAnimationTiming,
+        useNativeDriver: false,
+      }),
     ]).start();
   }
 
@@ -396,21 +396,21 @@ export default class VideoPlayer extends Component {
         useNativeDriver: false,
         duration: this.props.controlAnimationTiming,
       }),
-      // Animated.timing(this.animations.topControl.marginTop, {
-      //   toValue: 0,
-      //   useNativeDriver: false,
-      //   duration: this.props.controlAnimationTiming,
-      // }),
+      Animated.timing(this.animations.topControl.marginTop, {
+        toValue: 0,
+        useNativeDriver: false,
+        duration: this.props.controlAnimationTiming,
+      }),
       Animated.timing(this.animations.bottomControl.opacity, {
         toValue: 1,
         useNativeDriver: false,
         duration: this.props.controlAnimationTiming,
       }),
-      // Animated.timing(this.animations.bottomControl.marginBottom, {
-      //   toValue: 0,
-      //   useNativeDriver: false,
-      //   duration: this.props.controlAnimationTiming,
-      // }),
+      Animated.timing(this.animations.bottomControl.marginBottom, {
+        toValue: 0,
+        useNativeDriver: false,
+        duration: this.props.controlAnimationTiming,
+      }),
     ]).start();
   }
 
