@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Video from 'react-native-video';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {
   TouchableWithoutFeedback,
   TouchableHighlight,
@@ -161,7 +163,7 @@ export default class VideoPlayer extends Component {
     };
   }
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     const {isFullscreen} = this.props;
 
     if (prevProps.isFullscreen !== isFullscreen) {
@@ -1011,12 +1013,10 @@ export default class VideoPlayer extends Component {
    * Render fullscreen toggle and set icon based on the fullscreen state.
    */
   renderFullscreen() {
-    let source =
-      this.state.isFullscreen === true
-        ? require('./assets/img/shrink.png')
-        : require('./assets/img/expand.png');
+    let name =
+      this.state.isFullscreen === true ? 'fullscreen' : 'fullscreen-exit';
     return this.renderControl(
-      <Image source={source} />,
+      <MaterialCommunityIcon name={name} />,
       this.methods.toggleFullscreen,
       styles.controls.fullscreen,
     );
@@ -1079,7 +1079,7 @@ export default class VideoPlayer extends Component {
         {...this.player.seekPanResponder.panHandlers}>
         <View
           style={styles.seekbar.track}
-          onLayout={(event) =>
+          onLayout={event =>
             (this.player.seekerWidth = event.nativeEvent.layout.width)
           }
           pointerEvents={'none'}>
@@ -1209,7 +1209,7 @@ export default class VideoPlayer extends Component {
         <View style={[styles.player.container, this.styles.containerStyle]}>
           <Video
             {...this.props}
-            ref={(videoPlayer) => (this.player.ref = videoPlayer)}
+            ref={videoPlayer => (this.player.ref = videoPlayer)}
             resizeMode={this.state.resizeMode}
             volume={this.state.volume}
             paused={this.state.paused}
