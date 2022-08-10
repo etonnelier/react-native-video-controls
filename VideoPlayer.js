@@ -1014,9 +1014,9 @@ export default class VideoPlayer extends Component {
    */
   renderFullscreen() {
     let name =
-      this.state.isFullscreen === true ? 'fullscreen' : 'fullscreen-exit';
+      this.state.isFullscreen === true ? 'fullscreen-exit' : 'fullscreen';
     return this.renderControl(
-      <MaterialCommunityIcon name={name} />,
+      <MaterialCommunityIcon name={name} color="white" size={20} />,
       this.methods.toggleFullscreen,
       styles.controls.fullscreen,
     );
