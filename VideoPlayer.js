@@ -810,54 +810,53 @@ export default class VideoPlayer extends Component {
 
       /**
        * When panning, update the seekbar position, duh.
+       * This has been disabled because it was too buggy on Android (#1382)
        */
       onPanResponderMove: (evt, gestureState) => {
-        const position = this.state.seekerOffset + gestureState.dx;
-        this.setSeekerPosition(position);
-        let state = this.state;
-
-        if (
-          this.player.scrubbingTimeStep > 0 &&
-          !state.loading &&
-          !state.scrubbing
-        ) {
-          const time = this.calculateTimeFromSeekerPosition();
-          const timeDifference = Math.abs(state.currentTime - time) * 1000;
-
-          if (
-            time < state.duration &&
-            timeDifference >= this.player.scrubbingTimeStep
-          ) {
-            state.scrubbing = true;
-
-            this.setState(state);
-            setTimeout(() => {
-              this.player.ref.seek(time, this.player.scrubbingTimeStep);
-            }, 1);
-          }
-        }
+        // const position = this.state.seekerOffset + gestureState.dx;
+        // this.setSeekerPosition(position);
+        // let state = this.state;
+        // if (
+        //   this.player.scrubbingTimeStep > 0 &&
+        //   !state.loading &&
+        //   !state.scrubbing
+        // ) {
+        //   const time = this.calculateTimeFromSeekerPosition();
+        //   const timeDifference = Math.abs(state.currentTime - time) * 1000;
+        //   if (
+        //     time < state.duration &&
+        //     timeDifference >= this.player.scrubbingTimeStep
+        //   ) {
+        //     state.scrubbing = true;
+        //     this.setState(state);
+        //     setTimeout(() => {
+        //       this.player.ref.seek(time, this.player.scrubbingTimeStep);
+        //     }, 1);
+        //   }
+        // }
       },
 
       /**
        * On release we update the time and seek to it in the video.
        * If you seek to the end of the video we fire the
        * onEnd callback
+       * This has been disabled because it was too buggy on Android (#1382)
        */
       onPanResponderRelease: (evt, gestureState) => {
-        const time = this.calculateTimeFromSeekerPosition();
-        let state = this.state;
-        if (time >= state.duration && !state.loading) {
-          state.paused = true;
-          this.events.onEnd();
-        } else if (state.scrubbing) {
-          state.seeking = false;
-        } else {
-          this.seekTo(time);
-          this.setControlTimeout();
-          state.paused = state.originallyPaused;
-          state.seeking = false;
-        }
-        this.setState(state);
+        // const time = this.calculateTimeFromSeekerPosition();
+        // let state = this.state;
+        // if (time >= state.duration && !state.loading) {
+        //   state.paused = true;
+        //   this.events.onEnd();
+        // } else if (state.scrubbing) {
+        //   state.seeking = false;
+        // } else {
+        //   this.seekTo(time);
+        //   this.setControlTimeout();
+        //   state.paused = state.originallyPaused;
+        //   state.seeking = false;
+        // }
+        // this.setState(state);
       },
     });
   }
@@ -1076,7 +1075,8 @@ export default class VideoPlayer extends Component {
       <View
         style={styles.seekbar.container}
         collapsable={false}
-        {...this.player.seekPanResponder.panHandlers}>
+        // {...this.player.seekPanResponder.panHandlers}
+      >
         <View
           style={styles.seekbar.track}
           onLayout={event =>
